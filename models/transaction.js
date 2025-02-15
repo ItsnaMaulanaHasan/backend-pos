@@ -8,13 +8,11 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
       Transaction.belongsTo(models.Customer, { foreignKey: "customer_id" });
-
-      // Detail transaksi milik satu produk
-      Transaction.belongsTo(models.Product, { foreignKey: "product_id" });
-
-      // Transaksi memiliki banyak detail transaksi
+      Transaction.belongsTo(models.Product, {
+        foreignKey: "favorite_product_id",
+        as: "favoriteProduct",
+      });
       Transaction.hasMany(models.TransactionDetail, { foreignKey: "transaction_id" });
     }
   }
@@ -27,14 +25,13 @@ module.exports = (sequelize, DataTypes) => {
           key: "id",
         },
       },
-      product_id: {
+      favorite_product_id: {
         type: DataTypes.INTEGER,
         references: {
           model: "Products",
           key: "id",
         },
       },
-      product_id: DataTypes.INTEGER,
       total_price: DataTypes.DECIMAL(12, 2),
       transaction_date: DataTypes.DATE,
       created_at: DataTypes.DATE,
@@ -43,7 +40,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "Transaction",
-      tableName: "transactions",
+      tableName: "Transactions",
       timestamps: false,
     }
   );

@@ -8,11 +8,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
-      // Detail transaksi milik satu transaksi
       TransactionDetail.belongsTo(models.Transaction, { foreignKey: "transaction_id" });
-
-      // Detail transaksi milik satu produk
       TransactionDetail.belongsTo(models.Product, { foreignKey: "product_id" });
     }
   }
@@ -38,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "TransactionDetail",
-      tableName: "transactiondetails",
+      tableName: "TransactionDetails",
       timestamps: false,
     }
   );

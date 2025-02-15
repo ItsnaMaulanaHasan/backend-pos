@@ -18,14 +18,15 @@ module.exports = {
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
       },
-      product_id: {
+      favorite_product_id: {
         type: Sequelize.INTEGER,
+        allowNull: true,
         references: {
           model: "Products",
           key: "id",
         },
         onUpdate: "CASCADE",
-        onDelete: "CASCADE",
+        onDelete: "SET NULL",
       },
       total_price: {
         type: Sequelize.DECIMAL(12, 2),
