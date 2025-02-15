@@ -78,17 +78,25 @@ exports.getAllTransactions = async (req, res) => {
 exports.updateTransaction = async (req, res) => {
   try {
     const { id } = req.params;
-    const { products } = req.body; // products = [{ product_id, quantity }]
+    const { products } = req.body;
+
+    console.log(`Updating transaction ID: ${id} with data:`, products);
 
     const transaction = await Transaction.findByPk(id);
-    if (!transaction) return res.status(404).json({ message: "Transaction not found" });
+    if (!transaction) {
+      console.error("Transaction not found:", id);
+      return res.status(404).json({ message: "Transaction not found" });
+    }
 
     await TransactionDetail.destroy({ where: { transaction_id: id } });
 
     let totalPrice = 0;
     for (let { product_id, quantity } of products) {
       const product = await Product.findByPk(product_id);
-      if (!product) return res.status(404).json({ message: "Product not found" });
+      if (!product) {
+        console.error("Product not found:", product_id);
+        return res.status(404).json({ message: "Product not found" });
+      }
 
       const subtotal = product.price * quantity;
       totalPrice += subtotal;
@@ -103,8 +111,10 @@ exports.updateTransaction = async (req, res) => {
 
     await transaction.update({ total_price: totalPrice });
 
+    console.log("Transaction updated successfully");
     res.json({ message: "Transaction updated successfully" });
   } catch (error) {
+    console.error("Error updating transaction:", error);
     res.status(500).json({ error: error.message });
   }
 };

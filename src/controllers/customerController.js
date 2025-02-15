@@ -44,7 +44,7 @@ exports.getAllCustomersWithTransactions = async (req, res) => {
       id: customer.id,
       name: customer.name,
       level: customer.level,
-      favoriteMenu: customer.Transactions.length > 0 ? customer.Transactions[0].favorite_product?.name || "N/A" : "N/A",
+      favoriteMenu: customer.Transactions.length > 0 ? customer.Transactions[0].favoriteProduct?.name || "N/A" : "N/A",
       totalTransaction: customer.Transactions.reduce((total, transaction) => total + parseFloat(transaction.total_price), 0),
     }));
 

@@ -27,7 +27,7 @@ DB_USER=root
 DB_PASS=password_kamu
 DB_NAME=posdb
 DB_DIALECT=mysql
-PORT=3000
+PORT=8080
 ```
 
 ### 4. Migrasi dan Seeder Database
