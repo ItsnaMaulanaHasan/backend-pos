@@ -1,4 +1,4 @@
-# Backend Express API
+# Backend Express API POS
 
 Backend ini dibuat dengan **Node.js**, **Express.js**, dan **Sequelize ORM** untuk mengelola database **MySQL**.
 
