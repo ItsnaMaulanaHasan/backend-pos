@@ -183,5 +183,3 @@ npm run dev
 ```
 
 ---
-
-Sekarang API kamu sudah lengkap! 🚀 Jika ada tambahan atau revisi, beri tahu aku ya! 😊
