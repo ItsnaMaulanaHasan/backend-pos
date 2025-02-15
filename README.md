@@ -7,8 +7,8 @@ Backend ini dibuat dengan **Node.js**, **Express.js**, dan **Sequelize ORM** unt
 ### 1. Clone Repository
 
 ```sh
-git clone https://github.com/username/backend-express.git
-cd backend-express
+git clone https://github.com/ItsnaMaulanaHasan/backend-pos.git
+cd backend-pos
 ```
 
 ### 2. Install Dependencies
