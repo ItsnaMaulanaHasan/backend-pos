@@ -25,7 +25,7 @@ Buat database **MySQL** dan ubah file `.env` sesuai kebutuhan:
 DB_HOST=localhost
 DB_USER=root
 DB_PASS=password_kamu
-DB_NAME=expressdb
+DB_NAME=posdb
 DB_DIALECT=mysql
 PORT=3000
 ```
